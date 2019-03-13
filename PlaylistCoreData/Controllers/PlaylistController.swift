@@ -17,7 +17,7 @@ class PlaylistController {
     //Source of Truth is going to be the MOC
     var playlists: [Playlist] {
         //Form a request to pull playlists off of the hard drive
-        let request: NSFetchRequest <Playlist> = Playlist.fetchRequest()
+        let request: NSFetchRequest<Playlist> = Playlist.fetchRequest()
         //Deal with the throw
         return(try? CoreDataStack.context.fetch(request)) ?? []
     }
@@ -43,7 +43,7 @@ class PlaylistController {
         do {
             try CoreDataStack.context.save()
         } catch {
-            print("There was an error in \(#function) \(error) \(error.localizedDescription)")
+            print("There was an error in \(#function): \n \(error) \n \(error.localizedDescription)")
         }
     }
 }
