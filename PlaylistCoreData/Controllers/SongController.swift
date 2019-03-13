@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+class SongController {
+    
+    static func create(songWithTitle title: String, artist: String, playlist: Playlist) {
+        Song(title: title, artist: artist, playlist: playlist)
+        PlaylistController.sharedInstance.saveToPersistentStore()
+    }
+    
+    static func delete(song: Song) {
+        CoreDataStack.context.delete(song)
+        PlaylistController.sharedInstance.saveToPersistentStore()
+    }
+}
